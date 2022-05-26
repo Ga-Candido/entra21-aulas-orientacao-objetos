@@ -4,6 +4,7 @@ public class Pessoa {
 
 	//tudo que identifiquei como comum vem pra ca
 	//
+	//
 	private String nome;//
 	private byte idade;//
 	private String cpf;//
