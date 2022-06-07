@@ -6,9 +6,18 @@ import br.com.entra21.orientacao.objetos.principal.aula01.classes.Aluno;
 import br.com.entra21.orientacao.objetos.principal.aula01.classes.Professor;
 import br.com.entra21.orientacao.objetos.principal.aula02.heranca.Diretor;
 import br.com.entra21.orientacao.objetos.principal.aula02.heranca.Funcionario;
+import br.com.entra21.orientacao.objetos.principal.aula02.heranca.Pessoa;
 import br.com.entra21.orientacao.objetos.principal.aula03.polimorfismo.Atleta;
 import br.com.entra21.orientacao.objetos.principal.aula03.polimorfismo.Nadador;
 import br.com.entra21.orientacao.objetos.principal.aula03.polimorfismo.Velocista;
+import br.com.entra21.orientacao.objetos.principal.aula04.conceitospoo.Ponto;
+import br.com.entra21.orientacao.objetos.principal.aula04.conceitospoo.Reta;
+import br.com.entra21.orientacao.objetos.principal.aula04.interfaces.Capivara;
+import br.com.entra21.orientacao.objetos.principal.aula04.interfaces.Gato;
+import br.com.entra21.orientacao.objetos.principal.aula04.interfaces.Humano;
+import br.com.entra21.orientacao.objetos.principal.aula04.interfaces.Planta;
+import br.com.entra21.orientacao.objetos.principal.aula04.interfaces.Veiculo;
+import br.com.entra21.orientacao.objetos.principal.aula05.revisao.Revisao;
 
 public class Main {
 
@@ -22,9 +31,12 @@ public class Main {
 		byte option;
 		do {
 			System.out.println(" Escolha uma opção");
-			System.out.println("0- Sair ");
-			System.out.println("1- Classes");
-			System.out.println("2- Herança");
+			System.out.println("0 - Sair ");
+			System.out.println("1 - Classes");
+			System.out.println("2 - Herança");
+			System.out.println("3 - Aprender polimorfismo");
+			System.out.println("4 - Aprender Conceito POO");
+			System.out.println("5 - Aprender Polimorfismo com Interface");
 
 			option = input.nextByte();
 
@@ -42,15 +54,31 @@ public class Main {
 			case 3: 
 				aprenderClassesPolimorfismo();
 				break;
+			case 4:
+				aprenderConceitosPOO();
+				
+				break;
+				
+			case 5:
+				aprenderPolimorfismoInterface();
+				
+				break;
+			case 6:
+				revisarPOO();
+				
 				
 			default:
-				break;
+				System.out.println("Preste atenção");
+				break; 
+				
 
 			}
 
 		} while (option != 0);
 
 	}
+
+	
 
 	public static void aprenderClassesObjetos() {
 		Funcionario funcionario1 = new Funcionario();
@@ -153,5 +181,66 @@ public class Main {
 		System.out.println("----------------------------");
 
 	}
+
+	private static void aprenderConceitosPOO() {
+		
+		// a classe ponto tem alta COESÃO pois ele é preciso nas suas responsabilidades
+		 Ponto pontoAlto = new Ponto(30,10000);
+		 Ponto esquerdaBaixo = new Ponto(-50,-500);
+		 
+		 // A classe reta é agregada por pontos que podem não estar inicializados
+		//A asociação de reta e ponto e de um para muitos respectivamente
+		 
+		 Reta torta = new Reta();
+		 Reta retaDiagonal = new Reta(pontoAlto,esquerdaBaixo);
+		 
+	}
+	private static void aprenderPolimorfismoInterface() {
+		 
+		Humano Gabriel = new Humano();
+		Gabriel.setNome("Gabriel");
+		Gabriel.apresentarSe();
+		Gabriel.alimentar("Pizza");
+		Gabriel.locomover();
+		Gabriel.comunicar("Heey");
+		
+		System.out.println("----------------------");
+		
+		Gato vezu = new Gato("vezu", new Pessoa("Gabriel", (byte)19, ""));
+		vezu.alimentar("racao");
+		vezu.comunicar("quero ração");
+		vezu.locomover();
+		
+		System.out.println("------------------");
+		
+		Capivara robson = new Capivara();
+		robson.alimentar("Água");
+		robson.comunicar("");
+		robson.locomover();
+		
+		System.out.println(" ----------------------------");
+		
+	    Planta maracuja = new Planta("Passiflora edulis Sims");
+	    
+        maracuja.alimentar("Carne");
+        maracuja.comunicar("Tá fazendo Sol hoje?");
+        maracuja.locomover();
+        
+        System.out.println("---------------------------");
+   
+       
+	}
+	
+	private static void revisarPOO() {
+		
+		 Revisao.revisar();
+
+		
+	}
+	
+	
+
+	
+	
 
 }
